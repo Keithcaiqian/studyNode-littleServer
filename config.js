@@ -6,9 +6,6 @@ for(var i=0;i<confs.length;i++){
     var tempConf = confs[i].split('=')
     globalConf[tempConf[0]] = tempConf[1]
 }
-if(globalConf.path_position==='relative'){
-    globalConf.baseUrl = __dirname + globalConf.path
-}else{
-    globalConf.baseUrl = globalConf.path
-}
+globalConf.static_file_type = globalConf.static_file_type.split('|')
+
 module.exports = globalConf

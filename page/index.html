@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./index.css">
+</head>
+
+<body>
+    <input type="text" id="user" placeholder="学号">
+    <input type="password" id="password" placeholder="密码">
+    <button id="btn">提交</button>
+
+    <script>
+        btn.onclick = function () {
+            var id = user.value;
+            var pass = password.value;
+            var params = "id=" + id + '&password=' + pass;
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', '/login?'+ params, true);
+            xhr.send(null)
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    console.log(xhr.responseText)
+                    console.log(typeof xhr.responseText)
+                    if(xhr.responseText == 'ok'){
+                        alert('成功')
+                    }else{
+                        alert('失败')
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- <script src="./login.js"></script> -->
+</body>
+
+</html>

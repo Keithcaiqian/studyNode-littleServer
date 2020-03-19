@@ -1,0 +1,22 @@
+{
+  "name": "node",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Keithcaiqian/studyNode-littleServer.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Keithcaiqian/studyNode-littleServer/issues"
+  },
+  "homepage": "https://github.com/Keithcaiqian/studyNode-littleServer#readme",
+  "dependencies": {
+    "mysql": "^2.18.1"
+  }
+}
