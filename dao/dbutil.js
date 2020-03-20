@@ -2,7 +2,7 @@
 // npm install mysql -save 安装mysql
 var mysql = require('mysql')
 
-function createConnection() {
+function myconnection() {
     // 创建连接
     var connection = mysql.createConnection({
         host: '127.0.0.1',
@@ -13,5 +13,5 @@ function createConnection() {
     })
     return connection
 }
-module.exports = createConnection
+module.exports = myconnection
 

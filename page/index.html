@@ -9,32 +9,39 @@
 </head>
 
 <body>
-    <input type="text" id="user" placeholder="学号">
+    <!-- js请求方式 -->
+    <!-- <input type="text" id="user" placeholder="学号">
     <input type="password" id="password" placeholder="密码">
-    <button id="btn">提交</button>
-
-    <script>
+    <button id="btn">提交</button> -->
+    <!-- form请求方式 -->
+    <form method="POST" action="/login">
+        <input type="text" name="user" id="user" placeholder="学号">
+        <input type="password" name="pasword" id="password" placeholder="密码">
+        <input type="submit" value="提交">
+    </form>
+    <!-- <script>
         btn.onclick = function () {
             var id = user.value;
             var pass = password.value;
             var params = "id=" + id + '&password=' + pass;
+            console.log(params)
             var xhr = new XMLHttpRequest();
-            xhr.open('GET', '/login?'+ params, true);
-            xhr.send(null)
+            xhr.open('POST', '/login', true);
+            xhr.send(params)
             xhr.onreadystatechange = function () {
                 if (xhr.readyState == 4 && xhr.status == 200) {
                     console.log(xhr.responseText)
                     console.log(typeof xhr.responseText)
                     if(xhr.responseText == 'ok'){
                         alert('成功')
+                        window.open('/main.html','_self')
                     }else{
                         alert('失败')
                     }
                 }
             }
         }
-    </script>
-    <!-- <script src="./login.js"></script> -->
+    </script> -->
 </body>
 
 </html>

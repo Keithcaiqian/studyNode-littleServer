@@ -16,20 +16,33 @@ function getData(request,response){
 path.set('/getData',getData)
 
 function login(request,response){
-    var params = url.parse(request.url, true).query
-    queryAllStudent.queryStudentById(params.id,function(result){
-        var res = ''
-        if(result==null||result.length==0){
-            res = "fail"
-        }else{
-            if(result[0].password == params.password){
-                res= 'ok'
+    request.on("data",function(data){
+        var id = data.toString().split('&')[0].split('=')[1]
+        var password = data.toString().split('&')[1].split('=')[1]
+        queryAllStudent.queryStudentById(id,function(result){
+            var res = ''
+            if(result==null||result.length==0){
+                res = "fail"
+                response.writeHead(302,{'location':'/error.html'})
+                response.end()
             }else{
-                res = 'fail'
+                if(result[0].password == password){
+                    res= 'ok'
+                    response.writeHead(302,{'location':'/main.html','Set-cookie':'id='+result[0].id})
+                    response.end()
+                }else{
+                    res = 'fail'
+                    response.writeHead(302,{'location':'/error.html'})
+                    response.end()
+                }
             }
-        }
-        response.write(res)
-        response.end()
+            // js方式
+            // response.write(res)
+            // response.end()
+
+            // form方式
+
+        })
     })
 }
 path.set('/login',login)

@@ -3,12 +3,20 @@ var url = require('url')
 var fs = require('fs')
 var config = require('./config.js')
 var loader = require('./loader')
+var filterLoader = require('./filterLoader')
 var log = require('./log')
 http.createServer(function (request, response) {
     var pathName = url.parse(request.url).pathname
     var params = url.parse(request.url, true).query
     var isStatic = isStaticRequest(pathName)
-    log(pathName)
+    log(pathName.toString())
+    for(var i=0;i<filterLoader.length;i++){
+        var flag = filterLoader[i](request,response)
+        console.log(flag)
+        if(!flag){
+            return;
+        }
+    }
     if (isStatic) {
         try {
             var data = fs.readFileSync(config.path + pathName)

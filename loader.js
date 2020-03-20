@@ -4,6 +4,7 @@ var config = require('./config')
 var controllerset = []
 var pathMap = new Map()
 
+
 var filesDir = fs.readdirSync(config.web_path)
 for(var i=0;i<filesDir.length;i++){
     var temp = require('./'+config.web_path+'/'+filesDir[i])
@@ -18,5 +19,4 @@ for(var i=0;i<filesDir.length;i++){
         }
     }
 }
-console.log(pathMap.get('/getData'))
 module.exports = pathMap

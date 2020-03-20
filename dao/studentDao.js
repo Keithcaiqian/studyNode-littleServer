@@ -1,6 +1,6 @@
-var createConnection = require('./dbutil');
+var dutils = require('./dbutil');
 function queryAllStudent(success) {
-    var connection = createConnection()
+    var connection = dutils()
     var querySql = 'select * from students;'
     // 连接
     connection.connect()
@@ -15,7 +15,7 @@ function queryAllStudent(success) {
     connection.end()
 }
 function queryStudentByClassAndAge(classNum,age){
-    var connection = createConnection()
+    var connection = dutils()
     var querySql = 'select * from students where class = ? and age = ?;'
     var queryParams = [classNum,age]
     // 连接
@@ -31,7 +31,7 @@ function queryStudentByClassAndAge(classNum,age){
     connection.end()
 }
 function queryStudentById(id,success){
-    var connection = createConnection()
+    var connection = dutils()
     var querySql = 'select * from students where id = ?;'
     // 连接
     connection.connect()
